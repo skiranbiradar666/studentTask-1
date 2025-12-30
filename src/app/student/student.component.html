@@ -38,7 +38,7 @@
 
         <div class="col-md-7 mt-5">
             <div class="table-responsive">
-                <div class="table table-bordered">
+                <table class="table table-bordered" *ngIf="stdArr.length > 0; else nostd">
                    <thead>
                     <tr>
                         <th>Sr No.</th>
@@ -56,16 +56,23 @@
                         <td>{{std.email}}</td>
                         <td>{{std.contact}}</td>
                         <td>
-                            <button mat-mini-fab color="accent" class="mr-2"><mat-icon>edit</mat-icon></button>
+                            <button (click)="onEdit(std)"
+                            mat-mini-fab color="accent" class="mr-2"><mat-icon>edit</mat-icon></button>
                             
                         </td>
                         <td>
-                            <button mat-mini-fab color="warn" class="mr-2"><mat-icon>delete</mat-icon></button>
+                            <button (click)="onRemove(std.stdId)"
+                            mat-mini-fab color="warn" class="mr-2"><mat-icon>delete</mat-icon></button>
                         </td>
                     </tr>
                    </tbody> 
-                </div>
-            </div>
-        </div>
+                </table>
+
+                <ng-template #nostd>
+                    <p class="alert alert-warning">
+                        No Student !!!
+                    </p>
+                </ng-template>
+            
     </div>
 </div>
